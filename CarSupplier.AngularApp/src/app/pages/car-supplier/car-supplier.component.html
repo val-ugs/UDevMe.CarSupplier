@@ -1,0 +1,15 @@
+<div class="car-supplier p-5">
+    <div class="flex flex-row">
+        <app-add-car class="pr-5"></app-add-car>
+        <app-add-car-dealership></app-add-car-dealership>
+    </div>
+    <h1 class="text-2xl font-bold">Список автосалонов с авто:</h1>
+    <p *ngIf="loading" class="text-lg">Loading...</p>
+    <div class="flex flex-wrap" *ngIf="carDealershipService.carDealerships">
+        <app-car-dealership
+            *ngFor="let carDealership of carDealershipService.carDealerships; let i = index"
+            [carDealership]="carDealership"
+            class="pr-20"
+        ></app-car-dealership>
+    </div>
+</div>

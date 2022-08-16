@@ -1,0 +1,39 @@
+<div class="add-car">
+  <h1 class="text-2xl font-bold">Добавить автосалон:</h1>
+  <form
+    [formGroup]="form"
+    (ngSubmit)="submit()"
+    class="flex flex-col p-2"
+  >
+    <label>Название автосалона</label>
+    <input 
+      type="text"
+      formControlName="name"
+      class="border-2 w-72 mb-2"
+    />
+    <label>Максимальное количество автомобилей</label>
+    <input 
+      type="text"
+      formControlName="maxNumberOfCars"
+      class="border-2 w-72 mb-2"
+    />
+    <p
+      class="text-red-600 font-medium mb-2"
+      *ngIf="name.errors && (name.touched || isError)"
+    >Не установлено название автосалона</p>
+    <p
+      class="text-red-600 font-medium mb-2"
+      *ngIf="maxNumberOfCars.errors && (maxNumberOfCars.touched || isError)"
+    >Не установлено макимальное количество авто</p>
+    <button
+      type="submit"
+      class="border-2border-black w-48 bg-green-400 hover:bg-green-600 active:bg-green-800"
+    >Добавить автосалон</button>
+    <div 
+      *ngIf="apiErrorMessage != ''"
+      class="text-red-600 font-medium pl-2"
+    >
+      {{apiErrorMessage}}
+  </div>
+  </form>
+</div>

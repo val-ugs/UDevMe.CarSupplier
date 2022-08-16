@@ -1,0 +1,19 @@
+<div class="car-dealership pb-5">
+    <div>
+        <span>{{carDealership.name}}: {{carDealership.maxNumberOfCars}} мест </span>
+        <button
+        [ngClass]="{
+          'text-green-600': !details,
+          'text-blue-600': details
+        }"
+        (click)="details = !details"
+        >{{ details ? '[Спрятать]' : '[Открыть]' }}</button>
+    </div>
+    <div *ngIf="details">
+        <ol *ngFor="let car of carDealership.cars; let i = index">
+            <li>
+                <app-car [index]="i+1" [car]="car"></app-car>
+            </li>
+        </ol>
+    </div>
+</div>

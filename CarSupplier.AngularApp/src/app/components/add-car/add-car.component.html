@@ -1,0 +1,39 @@
+<div class="add-car">
+  <h1 class="text-2xl font-bold">Добавить авто:</h1>
+  <form
+    [formGroup]="form"
+    (ngSubmit)="submit()"
+    class="flex flex-col p-2"
+  >
+    <label>Марка</label>
+    <input 
+      type="text"
+      formControlName="brand"
+      class="border-2 w-72 mb-2"
+    />
+    <label>Цвет</label>
+    <input 
+      type="text"
+      formControlName="color"
+      class="border-2 w-72 mb-2"
+    />
+    <p
+      class="text-red-600 font-medium mb-2"
+      *ngIf="brand.errors && (brand.touched || isError)"
+    >Не установлена марка</p>
+    <p
+      class="text-red-600 font-medium mb-2"
+      *ngIf="color.errors && (color.touched || isError)"
+    >Не установлен цвет</p>
+    <button
+      type="submit"
+      class="border-2border-black w-32 bg-green-400 hover:bg-green-600 active:bg-green-800"
+    >Добавить авто</button>
+  </form>
+  <div 
+    *ngIf="apiErrorMessage != ''"
+    class="text-red-600 font-medium pl-2"
+  >
+      {{apiErrorMessage}}
+  </div>
+</div>
